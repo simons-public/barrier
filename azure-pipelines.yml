@@ -87,7 +87,7 @@ jobs:
       displayName: Installed Pinned Qt
     - script: brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/aac86fc018c48d7b6f23a2e7535276899774567a/Formula/openssl.rb
       displayName: Installed Pinned OpenSSL
-    - script: sh -x ./clean_build.sh
+    - script: QT_PATH=/usr/local/opt/qt/bin CMAKE_OSX_DEPLOYMENT_TARGET=10.12 CMAKE_OSX_ARCHITECTURES=x86_64 sh -x ./clean_build.sh
       displayName: Clean Build
     - task: PublishBuildArtifacts@1
       displayName: Publish Release DMG
