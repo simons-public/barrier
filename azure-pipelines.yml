@@ -17,10 +17,8 @@ jobs:
         B_BUILD_TYPE: Release
         BARRIER_VERSION_STAGE: Release
   steps:
-    - script: brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/aac86fc018c48d7b6f23a2e7535276899774567a/Formula/qt.rb
-      displayName: Installed Pinned Qt
-    - script: brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/aac86fc018c48d7b6f23a2e7535276899774567a/Formula/openssl.rb
-      displayName: Installed Pinned OpenSSL
+    - script: brew install qt5 pkg-config
+      displayName: Installed Qt
     - script: 
         export PATH="/usr/local/opt/openssl@1.1/bin:$PATH" &&
         export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib" &&
