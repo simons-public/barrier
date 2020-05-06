@@ -2,6 +2,7 @@
 
 # Checks if directory exists, otherwise asks to install package.
 function check_dir_exists() {
+    printf "Checking that dir $1 exists"
     local path=$1
     local package=$2
 
