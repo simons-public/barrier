@@ -22,10 +22,10 @@ jobs:
     - script: brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/aac86fc018c48d7b6f23a2e7535276899774567a/Formula/openssl.rb
       displayName: Installed Pinned OpenSSL
     - script: 
-        export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-        export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-        export CFLAGS="-I/usr/local/opt/openssl@1.1/include"
-        export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+        export PATH="/usr/local/opt/openssl@1.1/bin:$PATH" &&
+        export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib" &&
+        export CFLAGS="-I/usr/local/opt/openssl@1.1/include" &&
+        export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include" &&
         sh -x ./clean_build.sh
       displayName: Clean Build
     - task: PublishBuildArtifacts@1
