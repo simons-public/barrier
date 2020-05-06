@@ -19,6 +19,8 @@ jobs:
   steps:
     - script: brew info openssl
       displayName: show openssl info
+    - script: ln -s /usr/local/opt/openssl/include/openssl /usr/local/include
+      displayName: try linking openssl to usr/local
     - script: sudo xcode-select -s /Applications/Xcode_10.app/Contents/Developer
       displayName: Select older Xcode
     - script: brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/aac86fc018c48d7b6f23a2e7535276899774567a/Formula/qt.rb
