@@ -19,6 +19,8 @@ jobs:
   steps:
     - script: brew install pkg-config openssl qt5
       displayName: Installed prereqs
+    - script: export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH
+      displayName: add openssl pkg config path
     - script: pkg-config --libs openssl
       displayName: print openssl libs
     - script: QT_PATH=/usr/local/opt/qt/bin CMAKE_OSX_DEPLOYMENT_TARGET=10.14 CMAKE_OSX_ARCHITECTURES=x86_64 sh -x ./clean_build.sh
