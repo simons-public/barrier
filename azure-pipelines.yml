@@ -17,18 +17,14 @@ jobs:
         B_BUILD_TYPE: Release
         BARRIER_VERSION_STAGE: Release
   steps:
-    - script: brew info openssl
-      displayName: show openssl info
-    - script: ln -s /usr/local/opt/openssl/include/openssl /usr/local/include
-      displayName: try linking openssl to usr/local
-    - script: sudo xcode-select -s /Applications/Xcode_10.app/Contents/Developer
-      displayName: Select older Xcode
-    - script: brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/aac86fc018c48d7b6f23a2e7535276899774567a/Formula/qt.rb
-      displayName: Installed Pinned Qt
-    - script: brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/aac86fc018c48d7b6f23a2e7535276899774567a/Formula/openssl.rb
-      displayName: Installed Pinned OpenSSL
+    - script: brew install pkg-config openssl qt5
+      displayName: Installed prereqs
+    - script: pkg-config --libs openssl
+      displayName: print openssl libs
     - script: QT_PATH=/usr/local/opt/qt/bin CMAKE_OSX_DEPLOYMENT_TARGET=10.14 CMAKE_OSX_ARCHITECTURES=x86_64 sh -x ./clean_build.sh
       displayName: Clean Build
+    - script: pkg-config --libs openssl
+      displayName: print openssl libs2
     - task: PublishBuildArtifacts@1
       displayName: Publish Release DMG
       condition: eq(variables['B_BUILD_TYPE'], 'Release')
